@@ -13,26 +13,28 @@ function App() {
   };
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route path="/" element={<TaskList />} />
-            <Route
-              path="/contact"
-              element={
-                <div className="max-w-4xl mx-auto">
-                  <h2 className="text-2xl font-bold mb-6 text-center">
-                    فرم تماس
-                  </h2>
-                  <DynamicForm onSubmit={handleFormSubmit} />
-                </div>
-              }
-            />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <div dir="rtl">
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<TaskList />} />
+              <Route
+                path="/contact"
+                element={
+                  <div className="max-w-4xl mx-auto">
+                    <h2 className="text-2xl font-bold mb-6 text-center">
+                      فرم تماس
+                    </h2>
+                    <DynamicForm onSubmit={handleFormSubmit} />
+                  </div>
+                }
+              />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </div>
   );
 }
 

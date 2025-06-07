@@ -35,6 +35,7 @@
 }
 
 @theme inline {
+  --direction: rtl;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -80,6 +81,11 @@
   --color-primary-foreground-palete: var(--color-primary-foreground);
   --color-secondary-palete: var(--color-secondary);
   --color-secondary-foreground-palete: var(--color-secondary-foreground);
+
+  --font-Regular: "IRANSans-Regular", sans-serif;
+  --font-Bold: "IRANSans-Bold", sans-serif;
+  --font-Medium: "IRANSans-Medium", sans-serif;
+  --font-Light: "IRANSans-Light", sans-serif;
 }
 
 :root {
