@@ -36,7 +36,9 @@ export const TaskList = () => {
           {tasks?.map((task) => (
             <li key={task.id} className="task-item">
               <div>
-                <h3 className="text-lg font-semibold">{task.name}</h3>
+                <h3 className="text-lg font-semibold text-secondary-foreground-palete">
+                  {task.name}
+                </h3>
                 <p className="text-gray-600">
                   توضیحات: {task.description || "بدون توضیحات"}
                 </p>
