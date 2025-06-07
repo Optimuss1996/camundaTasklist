@@ -4,8 +4,6 @@ import { TaskList } from "./components/TaskList";
 import { DynamicForm } from "./components/forms/DynamicForm";
 import AppLayout from "./layout/AppLayout";
 
-import "./App.css";
-
 function App() {
   const queryClient = new QueryClient();
   const handleFormSubmit = async (data: any) => {
