@@ -1,24 +1,10 @@
-import { useTasklistLayoutStore } from "@/store/useTasklistLayoutState";
-
-import { TiPlus } from "react-icons/ti";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import SidebarHeader from "./SidebarHeader";
+import FilterItems from "./FilterItems";
 export default function Sidebar() {
-  const { isSidebarOpen, toggleSidebar } = useTasklistLayoutStore();
   return (
-    <div className=" h-screen px-2 py-1">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <p className="text-sm">ساخت فیلتر جدید</p>
-          <TiPlus size={15} />
-        </div>
-        <button onClick={toggleSidebar}>
-          {isSidebarOpen ? (
-            <MdKeyboardArrowRight size={25} />
-          ) : (
-            <MdKeyboardArrowLeft size={25} />
-          )}
-        </button>
-      </div>
+    <div className=" h-screen w-full  md:w-64 px-2 py-1  shadow-[-11px_0px_6px_-10px_rgba(0,_0,_0,_0.1)] ">
+      <SidebarHeader />
+      <FilterItems />
     </div>
   );
 }

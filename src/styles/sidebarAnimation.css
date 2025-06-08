@@ -1,0 +1,30 @@
+.w-sidebar-expanded {
+  width: 320px;
+}
+
+.w-sidebar-collapsed {
+  width: 48px;
+}
+/*  animation enter and exit */
+.sidebar-enter {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.sidebar-enter-active {
+  width: 320px;
+  opacity: 1;
+  transition: width 300ms ease, opacity 300ms ease;
+  overflow: hidden;
+}
+.sidebar-exit {
+  width: 320px;
+  opacity: 1;
+  overflow: hidden;
+}
+.sidebar-exit-active {
+  width: 0;
+  opacity: 0;
+  transition: width 300ms ease, opacity 300ms ease;
+  overflow: hidden;
+}
