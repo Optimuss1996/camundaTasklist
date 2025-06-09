@@ -25,6 +25,16 @@ export const camundaService = {
       throw error;
     }
   },
+  // get a list of task by filterID
+  getTaskByFilterId: async (filterId: string): Promise<Task[]> => {
+    try {
+      const response = await axios.get(`${BASE_URL}/filter/${filterId}/task`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching task by filter ${filterId}:`, error);
+      throw error;
+    }
+  },
 
   // complete a task
   completeTask: async (taskId: string, variables: Record<string, any> = {}) => {

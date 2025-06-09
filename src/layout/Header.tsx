@@ -34,7 +34,7 @@ export default function Header() {
         {/* {"------------------------- end mobile header > md -----------------------------"} */}
 
         <div>
-          <p className="text-sm md:text-xl font-Bold text-card-palete bg-green-800 rounded-md px-3 py-2">
+          <p className="text-sm md:text-xl font-Bold text-card-palete bg-custom-primary text-custom-neutral04 rounded-md px-3 py-2">
             Camunda
           </p>
         </div>

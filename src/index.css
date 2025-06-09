@@ -9,6 +9,7 @@
     font-family: "IRANSans-Regular", sans-serif;
   }
 }
+/* iranSans font */
 @font-face {
   font-family: "IRANSans-Light";
   src: url("/public/fonts/IRANSansX-Light.woff2") format("woff2");
@@ -30,6 +31,31 @@
 @font-face {
   font-family: "IRANSans-Bold";
   src: url("/public/fonts/IRANSansX-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+/* Inter font */
+@font-face {
+  font-family: "Inter";
+  src: url("/public/fonts/interFonts/InterLight.otf") format("otf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/public/fonts/interFonts/InterRegular.otf") format("otf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/public/fonts/interFonts/InterMedium.otf") format("otf");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/public/fonts/interFonts/InterBold.otf") format("otf");
   font-weight: 700;
   font-style: normal;
 }
@@ -73,14 +99,13 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-border: var(--border);
 
-  --color-background-palete: var(--color-background);
-  --color-foreground-palete: var(--color-foreground);
-  --color-card-palete: var(--color-card);
-  --color-card-foreground-palete: var(--color-card-foreground);
-  --color-primary-palete: var(--color-primary);
-  --color-primary-foreground-palete: var(--color-primary-foreground);
-  --color-secondary-palete: var(--color-secondary);
-  --color-secondary-foreground-palete: var(--color-secondary-foreground);
+  --color-custom-primary: var(--color-primary);
+  --color-custom-secondary: var(--color-secondary);
+  --color-custom-neutral00: var(--color-neutral00);
+  --color-custom-neutral01: var(--color-neutral01);
+  --color-custom-neutral02: var(--color-neutral02);
+  --color-custom-neutral03: var(--color-neutral03);
+  --color-custom-neutral04: var(--color-neutral04);
 
   --font-Regular: "IRANSans-Regular", sans-serif;
   --font-Bold: "IRANSans-Bold", sans-serif;
@@ -122,14 +147,13 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  --color-background: #ebf0f2;
-  --color-foreground: #232323;
-  --color-card: #ffffff;
-  --color-card-foreground: #232323;
-  --color-primary: #033c3f;
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #c1d1d3;
-  --color-secondary-foreground: #033c3f;
+  --color-primary: #0923a9;
+  --color-secondary: #2546f3;
+  --color-neutral00: #030303;
+  --color-neutral01: #595959;
+  --color-neutral02: #a6a6a6;
+  --color-neutral03: #d9d9d9;
+  --color-neutral04: #ffffff;
 }
 
 .dark {
