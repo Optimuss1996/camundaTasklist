@@ -106,7 +106,7 @@
   --color-custom-neutral02: var(--color-neutral02);
   --color-custom-neutral03: var(--color-neutral03);
   --color-custom-neutral04: var(--color-neutral04);
-
+  --color-custom-neutral05: var(--color-neutral05);
   --font-Regular: "IRANSans-Regular", sans-serif;
   --font-Bold: "IRANSans-Bold", sans-serif;
   --font-Medium: "IRANSans-Medium", sans-serif;
@@ -154,6 +154,7 @@
   --color-neutral02: #a6a6a6;
   --color-neutral03: #d9d9d9;
   --color-neutral04: #ffffff;
+  --color-neutral05: #f5f6fa;
 }
 
 .dark {
