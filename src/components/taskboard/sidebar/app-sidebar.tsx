@@ -1,6 +1,5 @@
-import { Search, Settings } from "lucide-react";
 import { BiTask } from "react-icons/bi";
-import { HiOutlineUserCircle, HiOutlineUserGroup } from "react-icons/hi2";
+import { HiOutlineUserGroup } from "react-icons/hi2";
 import {
   Sidebar,
   SidebarContent,
@@ -18,6 +17,8 @@ import { GoInbox } from "react-icons/go";
 import { CgShortcut } from "react-icons/cg";
 import { IoSettingsOutline } from "react-icons/io5";
 import { NavUser } from "@/components/nav-user";
+
+import LogoutButton from "@/components/common/LogoutButton";
 // Menu items.
 const items = [
   {
@@ -72,6 +73,11 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              <SidebarMenuItem className="pr-2 py-1 ">
+                <SidebarMenuButton asChild>
+                  <LogoutButton />
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

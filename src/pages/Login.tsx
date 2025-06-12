@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/Button";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import { useAuthStore } from "@/store/useAuthStore";
 type LoginFormData = {
   username: string;
   password: string;
@@ -24,7 +24,7 @@ export default function Login() {
 
   const { mutate, isPending } = useLogin();
   const navigate = useNavigate();
-
+  const { setAuth } = useAuthStore();
   const onSubmit = (data: LoginFormData) => {
     if (!data.username || !data.password) {
       toast.error("لطفاً تمام فیلدها را پر کنید.");
@@ -38,6 +38,7 @@ export default function Login() {
         if (res.authenticated) {
           toast.success("ورود موفقیت‌آمیز بود!");
           navigate("/taskboard");
+          setAuth(res.userName);
         } else {
           toast.error("نام کاربری یا رمز عبور اشتباه است.");
         }

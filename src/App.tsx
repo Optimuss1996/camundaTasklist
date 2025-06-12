@@ -3,7 +3,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import Taskboard from "./pages/Taskboard";
 import Login from "./pages/Login";
-
+import ProtectRoute from "./components/common/ProtectRoute";
+import AppInitilizer from "./layout/AppInitilizer";
 function App() {
   const queryClient = new QueryClient();
 
@@ -11,11 +12,19 @@ function App() {
     <div dir="rtl">
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
+          <AppInitilizer />
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/taskboard" element={<Taskboard />} />
+            <Route
+              path="/taskboard"
+              element={
+                <ProtectRoute>
+                  <Taskboard />
+                </ProtectRoute>
+              }
+            />
           </Routes>
-
+          {/* ------------------toaster notifications------------------ */}
           <Toaster
             position="top-center"
             reverseOrder={false}

@@ -1,11 +1,12 @@
+import { RxHamburgerMenu } from "react-icons/rx";
 import { useSidebar } from "@/components/ui/sidebar";
-import { GoSidebarCollapse } from "react-icons/go";
 
-export function CustomMobileTrigger() {
+export function CustomTriggerMobileSidebar() {
   const { toggleSidebar } = useSidebar();
+
   return (
-    <button onClick={toggleSidebar} className=" ">
-      <GoSidebarCollapse
+    <button onClick={toggleSidebar} className="block md:hidden">
+      <RxHamburgerMenu
         size={28}
         className="text-custom-primary cursor-pointer "
       />

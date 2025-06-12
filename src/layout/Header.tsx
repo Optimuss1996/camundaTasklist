@@ -1,43 +1,14 @@
-import { Link } from "react-router";
+import { CustomTriggerMobileSidebar } from "@/components/ui/CustomTriggerMobileSidebar";
 
-import { CiCircleList } from "react-icons/ci";
-
-import { DropdownHome } from "@/components/common/DropdownHome";
-import { DropdownUser } from "@/components/common/DropdownUser";
-import { ModalShortCut } from "@/components/common/ModalShortCut";
-import { MobileSheetMenu } from "./MobileSheetMenu";
 export default function Header() {
   return (
-    <div className="w-full px-6 py-4 shadow-[0px_20px_12px_-16px_rgba(0,_0,_0,_0.1)]">
-      {/* {"-------------------------start desktop header > md -----------------------------"} */}
-      <div className="flex justify-between items-center   ">
-        <div className=" hidden sm:flex items-center gap-6">
-          <DropdownHome />
-          <DropdownUser />
-          <Link to="http://localhost:8080/camunda/app/admin/default/#/">
-            <div className=" flex items-center gap-2">
-              <CiCircleList
-                className="text-xl text-primary-palete cursor-pointer"
-                size={20}
-              />
-              <p className=" text-sm md:text-base">شروع فرایند</p>
-            </div>
-          </Link>
-          <ModalShortCut />
-        </div>
-        {/* {"-------------------------end desktop header > md -----------------------------"} */}
+    <div className="flex items-center justify-between bg-custom-neutral04 shadow-[0px_15px_29px_21px_rgba(8,_11,_14,_0.06)] h-16 w-full px-4">
+      <div className="flex items-center justify-center">
+        <CustomTriggerMobileSidebar />
+      </div>
 
-        {/* {"------------------------- start mobile header > md -----------------------------"} */}
-        <div className="block sm:hidden">
-          <MobileSheetMenu />
-        </div>
-        {/* {"------------------------- end mobile header > md -----------------------------"} */}
-
-        <div>
-          <p className="text-sm md:text-xl font-Bold text-card-palete bg-custom-primary text-custom-neutral04 rounded-md px-3 py-2">
-            Camunda
-          </p>
-        </div>
+      <div className="flex items-center justify-center">
+        <img src="/images/logo/HafariLogo.png" alt="logo" className="w-24" />
       </div>
     </div>
   );
