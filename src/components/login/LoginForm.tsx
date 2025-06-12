@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/login/FormField";
-import type { UseFormRegister, UseFormHandleSubmit } from "react-hook-form";
+import type {
+  UseFormRegister,
+  UseFormHandleSubmit,
+  FieldErrors,
+} from "react-hook-form";
 
 interface LoginFormData {
   username: string;
@@ -12,6 +16,7 @@ interface LoginFormProps {
   handleSubmit: UseFormHandleSubmit<LoginFormData>;
   onSubmit: (data: LoginFormData) => void;
   isPending: boolean;
+  errors: FieldErrors<LoginFormData>;
 }
 
 export function LoginForm({
@@ -19,6 +24,7 @@ export function LoginForm({
   handleSubmit,
   onSubmit,
   isPending,
+  errors,
 }: LoginFormProps) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -29,6 +35,7 @@ export function LoginForm({
           type="text"
           placeholder="نام کاربری خود را وارد کنید"
           register={register}
+          error={errors.username?.message}
         />
         <FormField
           label="کلمه عبور"
@@ -36,8 +43,9 @@ export function LoginForm({
           type="password"
           placeholder="رمز خود را وارد کنید"
           register={register}
+          error={errors.password?.message}
         />
-        <div className=" flex flex-col w-full max-w-[450px] font-bold gap-2">
+        <div className="flex flex-col w-full max-w-[450px] font-bold gap-2">
           <Button type="submit" disabled={isPending} className="cursor-pointer">
             {isPending ? "در حال ورود..." : "ورود"}
           </Button>

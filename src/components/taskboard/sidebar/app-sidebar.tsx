@@ -1,60 +1,74 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
-
+import { Search, Settings } from "lucide-react";
+import { BiTask } from "react-icons/bi";
+import { HiOutlineUserCircle, HiOutlineUserGroup } from "react-icons/hi2";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-
+import { Link } from "react-router";
+import { CustomTriggerDeskTopSidebar } from "@/components/ui/customeTriggerSidebar";
+import { GoInbox } from "react-icons/go";
+import { CgShortcut } from "react-icons/cg";
+import { IoSettingsOutline } from "react-icons/io5";
+import { NavUser } from "@/components/nav-user";
 // Menu items.
 const items = [
   {
-    title: "Home",
+    title: "وظیفه های من",
     url: "#",
-    icon: Home,
+    icon: BiTask,
   },
   {
-    title: "Inbox",
+    title: "پیام های من",
     url: "#",
-    icon: Inbox,
+    icon: GoInbox,
   },
   {
-    title: "Calendar",
+    title: "وظیفه های گروه",
     url: "#",
-    icon: Calendar,
+    icon: HiOutlineUserGroup,
   },
   {
-    title: "Search",
+    title: "کلید های میانبر",
     url: "#",
-    icon: Search,
+    icon: CgShortcut,
   },
   {
-    title: "Settings",
+    title: "تنظیمات",
     url: "#",
-    icon: Settings,
+    icon: IoSettingsOutline,
   },
 ];
 
 export function AppSidebar() {
   return (
-    <Sidebar dir="rtl">
-      <SidebarContent dir="rtl">
-        <SidebarGroup dir="rtl">
-          <SidebarGroupLabel dir="rtl">Application</SidebarGroupLabel>
+    <Sidebar>
+      <CustomTriggerDeskTopSidebar />
+      <SidebarHeader className="bg-custom-neutral04 py-10">
+        <div className="flex items-center justify-center gap-2 ">
+          <img src="/images/logo/HafariLogo.png" alt="logo" className="w-32 " />
+        </div>
+      </SidebarHeader>
+      <SidebarContent className="bg-custom-neutral04">
+        <SidebarGroup className="">
           <SidebarGroupContent>
-            <SidebarMenu dir="rtl">
+            <SidebarMenu>
               {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
+                <SidebarMenuItem key={item.title} className="pr-2 py-1 ">
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
+                    <Link to={item.url}>
+                      <item.icon className="text-custom-primary !size-6 opacity-70" />
+                      <span className="text-base text-custom-primary">
+                        {item.title}
+                      </span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -62,6 +76,14 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <NavUser
+          user={{
+            name: "علی حسینی",
+            email: "alihsini@gmail.com",
+          }}
+        />
+      </SidebarFooter>
     </Sidebar>
   );
 }
