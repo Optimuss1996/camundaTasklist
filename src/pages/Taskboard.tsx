@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/taskboard/sidebar/app-sidebar";
+import Index from "@/components/taskboard/tasklist/Index";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import Header from "@/layout/Header";
 
@@ -6,20 +7,30 @@ export default function Taskboard() {
   return (
     <SidebarProvider>
       <div className="w-full max-w-[1920px] h-screen bg-custom-neutral05 overflow-hidden">
+        {/* ---------------------------sidebar--------------------------- */}
         <Header />
-        <div className="w-full h-screen bg-custom-neutral05 flex flex-col md:flex-row  items-center justify-center">
-          <h1 className="w-[80px] h-screen bg-transparent hidden md:block"></h1>
-          <h1 className="text-custom-primary h-screen  text-2xl font-bold bg-amber-600 flex-1">
-            tasklist
-          </h1>
-          <h1 className="text-custom-primary h-screen text-2xl font-bold bg-blue-700 flex-1">
-            details form
-          </h1>
+        {/* ---------------------------sidebar--------------------------- */}
+
+        {/* ---------------------------main content--------------------------- */}
+
+        <div className=" flex md:flex-row flex-col w-full bg-custom-neutral05">
+          <div className="w-[80px] h-screen bg-transparent hidden md:block"></div>
+          <div className="w-full h-screen bg-transparent flex flex-col md:flex-row gap-x-5 gap-y-3 items-center justify-center px-2 py-3 md:px-4 md:py-4 ">
+            <div className="bg-custom-neutral04 h-full w-full md:w-[270px] lg:w-[340px] xl:w-[380px] rounded-2xl border border-custom-neutral03 overflow-y-auto pt-3 pb-20">
+              <Index />
+            </div>
+            <div className="bg-custom-neutral04 h-full w-full flex-1 rounded-2xl border border-custom-neutral03 ">
+              details form
+            </div>
+          </div>
         </div>
+        {/* ---------------------------main content--------------------------- */}
+
+        {/* ---------------------------sidebar--------------------------- */}
         <div className="w-full h-screen bg-custom-neutral05">
-          {/* <SidebarTrigger /> */}
           <AppSidebar />
         </div>
+        {/* ---------------------------sidebar--------------------------- */}
       </div>
     </SidebarProvider>
   );

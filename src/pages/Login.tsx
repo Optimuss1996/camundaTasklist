@@ -38,7 +38,8 @@ export default function Login() {
         if (res.authenticated) {
           toast.success("ورود موفقیت‌آمیز بود!");
           navigate("/taskboard");
-          setAuth(res.userName);
+          setAuth(res.authenticatedUser);
+          console.log("username account : ", res.authenticatedUser);
         } else {
           toast.error("نام کاربری یا رمز عبور اشتباه است.");
         }

@@ -11,14 +11,15 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { CustomTriggerDeskTopSidebar } from "@/components/ui/customeTriggerSidebar";
 import { GoInbox } from "react-icons/go";
 import { CgShortcut } from "react-icons/cg";
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoLogOutOutline, IoSettingsOutline } from "react-icons/io5";
 import { NavUser } from "@/components/nav-user";
+import { useAuthStore } from "@/store/useAuthStore";
 
-import LogoutButton from "@/components/common/LogoutButton";
+import { cn } from "@/lib/utils";
 // Menu items.
 const items = [
   {
@@ -46,9 +47,22 @@ const items = [
     url: "#",
     icon: IoSettingsOutline,
   },
+  {
+    title: "خروج از حساب کاربری",
+    url: "/login",
+    icon: IoLogOutOutline,
+  },
 ];
 
 export function AppSidebar() {
+  const { logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <Sidebar>
       <CustomTriggerDeskTopSidebar />
@@ -61,23 +75,40 @@ export function AppSidebar() {
         <SidebarGroup className="">
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title} className="pr-2 py-1 ">
-                  <SidebarMenuButton asChild>
+              {items.map((item, index) => (
+                <SidebarMenuItem
+                  key={index}
+                  onClick={
+                    index === items.length - 1 ? handleLogout : undefined
+                  }
+                  className="pr-2 py-1 "
+                >
+                  <SidebarMenuButton
+                    asChild
+                    className={cn(
+                      "hover:bg-blue-50",
+                      index === items.length - 1 && "hover:bg-red-50"
+                    )}
+                  >
                     <Link to={item.url}>
-                      <item.icon className="text-custom-primary !size-6 opacity-70" />
-                      <span className="text-base text-custom-primary">
+                      <item.icon
+                        className={cn(
+                          "text-custom-primary !size-6 opacity-70",
+                          index === items.length - 1 && "text-red-400"
+                        )}
+                      />
+                      <span
+                        className={cn(
+                          "text-base text-custom-primary",
+                          index === items.length - 1 && "text-red-400"
+                        )}
+                      >
                         {item.title}
                       </span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
-              <SidebarMenuItem className="pr-2 py-1 ">
-                <SidebarMenuButton asChild>
-                  <LogoutButton />
-                </SidebarMenuButton>
-              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

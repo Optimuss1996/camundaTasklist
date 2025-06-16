@@ -5,6 +5,7 @@ import Taskboard from "./pages/Taskboard";
 import Login from "./pages/Login";
 import ProtectRoute from "./components/common/ProtectRoute";
 import AppInitilizer from "./layout/AppInitilizer";
+import HomeRedirect from "./pages/HomeRedirect";
 function App() {
   const queryClient = new QueryClient();
 
@@ -14,6 +15,7 @@ function App() {
         <BrowserRouter>
           <AppInitilizer />
           <Routes>
+            <Route path="/" element={<HomeRedirect />} />
             <Route path="/login" element={<Login />} />
             <Route
               path="/taskboard"

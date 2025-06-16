@@ -155,6 +155,28 @@
   --color-neutral03: #d9d9d9;
   --color-neutral04: #ffffff;
   --color-neutral05: #f5f6fa;
+  /* scrollbar */
+  --sb-track-color: #c5dde8;
+  --sb-thumb-color: #6ba9be;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 18px;
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 18px;
+}
+
+@supports not selector(::::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--color-neutral03) var(--color-neutral04);
+  }
 }
 
 .dark {

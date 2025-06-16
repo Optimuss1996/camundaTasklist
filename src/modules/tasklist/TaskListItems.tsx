@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { useGetTaskByFilterId } from "../../services/reactQuery/useTask";
+import { useGetTaskByFilterId } from "../../services/reactQuery/useUserTask";
 export default function TaskListItems() {
   const [searchParams] = useSearchParams();
   const filter = searchParams.get("filter");
