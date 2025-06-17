@@ -1,3 +1,4 @@
+import TooltipWrapper from "@/components/common/TooltipWrapper";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { useGetUserTasks } from "@/services/reactQuery/useUserTask";
@@ -25,13 +26,13 @@ export default function Index() {
       <div className="text-xl font-bold pb-4 text-custom-primary">
         لیست وظایف :
       </div>
-      <div className=" flex flex-col gap-6">
+      <div className=" flex  flex-col gap-6">
         {tasks?.map((task) => (
-          <div className="flex flex-col gap-4 bg-custom-neutral05 border-2 rounded-2xl px-4 py-2">
-            <div className="w-full h-[350px] flex flex-col gap-6 ">
+          <div className="flex flex-col gap-4 bg-custom-neutral05 border-2 rounded-2xl px-4 py-3">
+            <div className="w-full h-[350px] flex flex-col justify-between gap-6 ">
               {/* task name */}
               <div className="flex justify-center items-center">
-                <p className="text-lg font-bold text-custom-primary">
+                <p className="text-xl font-bold text-custom-primary">
                   {task.name}
                 </p>
               </div>
@@ -54,14 +55,16 @@ export default function Index() {
                 {/* task details */}
                 <div className="flex justify-around items-center">
                   <p className="text-base  text-custom-neutral02"> اولویت : </p>
-                  <p
-                    className={cn(
-                      "text-base font-bold px-3 py-1 rounded-lg",
-                      getPriorityColor(task.priority)
-                    )}
-                  >
-                    {toPersianDigits(task.priority)}
-                  </p>
+                  <TooltipWrapper>
+                    <p
+                      className={cn(
+                        "text-base font-bold px-3 py-1 rounded-lg",
+                        getPriorityColor(task.priority)
+                      )}
+                    >
+                      {toPersianDigits(task.priority)}
+                    </p>
+                  </TooltipWrapper>
                 </div>
               </div>
 

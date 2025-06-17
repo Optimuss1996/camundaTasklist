@@ -26,17 +26,12 @@ export default function Login() {
   const navigate = useNavigate();
   const { setAuth } = useAuthStore();
   const onSubmit = (data: LoginFormData) => {
-    if (!data.username || !data.password) {
-      toast.error("لطفاً تمام فیلدها را پر کنید.");
-      return;
-    }
-
     console.log("فرم ارسال شد:", data);
 
     mutate(data, {
       onSuccess: (res) => {
         if (res.authenticated) {
-          toast.success("ورود موفقیت‌آمیز بود!");
+          toast.success("خوش آمدید");
           navigate("/taskboard");
           setAuth(res.authenticatedUser);
           console.log("username account : ", res.authenticatedUser);

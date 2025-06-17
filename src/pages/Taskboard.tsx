@@ -19,8 +19,10 @@ export default function Taskboard() {
             <div className="bg-custom-neutral04 h-full w-full md:w-[270px] lg:w-[340px] xl:w-[380px] rounded-2xl border border-custom-neutral03 overflow-y-auto pt-3 pb-20">
               <Index />
             </div>
-            <div className="bg-custom-neutral04 h-full w-full flex-1 rounded-2xl border border-custom-neutral03 ">
-              details form
+            <div className="bg-custom-neutral04 h-full w-full flex-1 rounded-2xl border border-custom-neutral03 flex justify-center items-center">
+              <p className=" bg-custom-primary px-4 py-2 rounded-3xl  text-xl text-custom-neutral04 shadow-2xl">
+                Details Forms
+              </p>
             </div>
           </div>
         </div>

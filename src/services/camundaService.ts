@@ -1,4 +1,4 @@
-import type { Task } from "@/types/types";
+import type { ProcessDefinition, Task } from "@/types/types";
 import axiosInstance from "@/api/axiosInstance";
 
 export const camundaService = {
@@ -14,6 +14,18 @@ export const camundaService = {
       params: {
         assignee,
         includeProcessVariables: true,
+      },
+    });
+    return response.data;
+  },
+  getStartAbleProcesses: async (
+    username: string
+  ): Promise<ProcessDefinition[]> => {
+    const response = await axiosInstance.get(`/process-definition`, {
+      params: {
+        startableInTasklist: true,
+        startableByUser: username,
+        latestVersion: true,
       },
     });
     return response.data;

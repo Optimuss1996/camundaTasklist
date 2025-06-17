@@ -1,5 +1,6 @@
 import { BiTask } from "react-icons/bi";
 import { HiOutlineUserGroup } from "react-icons/hi2";
+import { FaArrowRotateLeft } from "react-icons/fa6";
 import {
   Sidebar,
   SidebarContent,
@@ -28,14 +29,19 @@ const items = [
     icon: BiTask,
   },
   {
-    title: "پیام های من",
-    url: "#",
-    icon: GoInbox,
-  },
-  {
     title: "وظیفه های گروه",
     url: "#",
     icon: HiOutlineUserGroup,
+  },
+  {
+    title: " شروع فرایند ",
+    url: "#",
+    icon: FaArrowRotateLeft,
+  },
+  {
+    title: "پیام های من",
+    url: "#",
+    icon: GoInbox,
   },
   {
     title: "کلید های میانبر",
