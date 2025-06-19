@@ -21,6 +21,7 @@ import { NavUser } from "@/components/nav-user";
 import { useAuthStore } from "@/store/useAuthStore";
 
 import { cn } from "@/lib/utils";
+import { useModalStore } from "@/store/useModalStore";
 // Menu items.
 const items = [
   {
@@ -37,6 +38,7 @@ const items = [
     title: " شروع فرایند ",
     url: "#",
     icon: FaArrowRotateLeft,
+    action: () => useModalStore.getState().openModal(), // open modal
   },
   {
     title: "پیام های من",
@@ -63,6 +65,7 @@ const items = [
 export function AppSidebar() {
   const { logout } = useAuthStore();
   const navigate = useNavigate();
+  const { isOpen } = useModalStore();
 
   const handleLogout = () => {
     logout();

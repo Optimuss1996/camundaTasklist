@@ -7,5 +7,6 @@ export const useProcessDefinition = (username: string) => {
     queryKey: ["process", "startable", username],
     queryFn: () => camundaService.getStartAbleProcesses(username),
     enabled: !!username,
+    refetchOnWindowFocus: false,
   });
 };
