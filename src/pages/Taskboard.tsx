@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/components/taskboard/sidebar/app-sidebar";
 import Index from "@/components/taskboard/tasklist/Index";
+import TaskDetails from "@/components/taskboard/taskdetails/index";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import Header from "@/layout/Header";
 
@@ -20,8 +21,8 @@ export default function Taskboard() {
               <Index />
             </div>
             <div className="bg-custom-neutral04 h-full w-full flex-1 rounded-2xl border border-custom-neutral03 flex justify-center items-center">
-              <p className=" bg-custom-primary px-4 py-2 rounded-3xl  text-xl text-custom-neutral04 shadow-2xl">
-                Details Forms
+              <p className="  px-4 py-2 rounded-3xl  text-xl text-custom-neutral04 ">
+                <TaskDetails />
               </p>
             </div>
           </div>

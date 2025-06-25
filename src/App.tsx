@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import ProtectRoute from "./components/common/ProtectRoute";
 import AppInitilizer from "./layout/AppInitilizer";
 import HomeRedirect from "./pages/HomeRedirect";
+
 function App() {
   const queryClient = new QueryClient();
 

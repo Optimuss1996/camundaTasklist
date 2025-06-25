@@ -22,58 +22,102 @@ import { useAuthStore } from "@/store/useAuthStore";
 
 import { cn } from "@/lib/utils";
 import { useModalStore } from "@/store/useModalStore";
+import ProcessDefinitionModal from "./ProcessDefinitionModal";
+
 // Menu items.
-const items = [
-  {
-    title: "وظیفه های من",
-    url: "#",
-    icon: BiTask,
-  },
-  {
-    title: "وظیفه های گروه",
-    url: "#",
-    icon: HiOutlineUserGroup,
-  },
-  {
-    title: " شروع فرایند ",
-    url: "#",
-    icon: FaArrowRotateLeft,
-    action: () => useModalStore.getState().openModal(), // open modal
-  },
-  {
-    title: "پیام های من",
-    url: "#",
-    icon: GoInbox,
-  },
-  {
-    title: "کلید های میانبر",
-    url: "#",
-    icon: CgShortcut,
-  },
-  {
-    title: "تنظیمات",
-    url: "#",
-    icon: IoSettingsOutline,
-  },
-  {
-    title: "خروج از حساب کاربری",
-    url: "/login",
-    icon: IoLogOutOutline,
-  },
-];
+// const items = [
+//   {
+//     title: "وظیفه های من",
+//     url: "#",
+//     icon: BiTask,
+//   },
+//   {
+//     title: "وظیفه های گروه",
+//     url: "#",
+//     icon: HiOutlineUserGroup,
+//   },
+//   {
+//     title: " شروع فرایند ",
+//     url: "#",
+//     icon: FaArrowRotateLeft,
+//     action: () => useModalStore.getState().openModal(), // open modal
+//   },
+//   {
+//     title: "پیام های من",
+//     url: "#",
+//     icon: GoInbox,
+//   },
+//   {
+//     title: "کلید های میانبر",
+//     url: "#",
+//     icon: CgShortcut,
+//   },
+//   {
+//     title: "تنظیمات",
+//     url: "#",
+//     icon: IoSettingsOutline,
+//   },
+//   {
+//     title: "خروج از حساب کاربری",
+//     url: "/login",
+//     icon: IoLogOutOutline,
+//   },
+// ];
 
 export function AppSidebar() {
   const { logout } = useAuthStore();
   const navigate = useNavigate();
-  const { isOpen } = useModalStore();
+  const { openModal } = useModalStore();
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
+  ////////////////////////////////////////////////////
 
+  const items = [
+    {
+      title: "وظیفه های من",
+      url: "#",
+      icon: BiTask,
+    },
+    {
+      title: "وظیفه های گروه",
+      url: "#",
+      icon: HiOutlineUserGroup,
+    },
+    {
+      title: " شروع فرایند ",
+      url: "#",
+      icon: FaArrowRotateLeft,
+      action: () => openModal, // open modal
+    },
+    {
+      title: "پیام های من",
+      url: "#",
+      icon: GoInbox,
+    },
+    {
+      title: "کلید های میانبر",
+      url: "#",
+      icon: CgShortcut,
+    },
+    {
+      title: "تنظیمات",
+      url: "#",
+      icon: IoSettingsOutline,
+    },
+    {
+      title: "خروج از حساب کاربری",
+      url: "/login",
+      icon: IoLogOutOutline,
+      action: () => handleLogout,
+    },
+  ];
+  ////////////////////////////////////////////////////
   return (
     <Sidebar>
+      <ProcessDefinitionModal />
       <CustomTriggerDeskTopSidebar />
       <SidebarHeader className="bg-custom-neutral04 py-10">
         <div className="flex items-center justify-center gap-2 ">
@@ -87,9 +131,7 @@ export function AppSidebar() {
               {items.map((item, index) => (
                 <SidebarMenuItem
                   key={index}
-                  onClick={
-                    index === items.length - 1 ? handleLogout : undefined
-                  }
+                  onClick={item.action}
                   className="pr-2 py-1 "
                 >
                   <SidebarMenuButton
