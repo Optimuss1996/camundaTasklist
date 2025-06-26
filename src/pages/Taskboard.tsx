@@ -21,7 +21,7 @@ export default function Taskboard() {
               <Index />
             </div> */}
             <div className="bg-custom-neutral04 h-full w-full flex-1 rounded-2xl border border-custom-neutral03 flex justify-center items-center">
-              <div className="  px-4 py-2 rounded-3xl  text-xl text-custom-neutral04 ">
+              <div className=" w-full ">
                 <TaskDetails />
               </div>
             </div>

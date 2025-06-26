@@ -9,16 +9,19 @@ import {
 import type { SortingState } from "@tanstack/react-table";
 import { useGetUserTasks } from "@/services/reactQuery/useUserTask";
 import { useAuthStore } from "@/store/useAuthStore";
-import { type Task } from "@/types/types"; //
+import { type Task } from "@/types/types";
 import { useState } from "react";
 import { LuArrowUpDown } from "react-icons/lu";
 import { convertToJalaliDateString } from "@/utils/ConvertMiladiToShamsi";
 import { CiSearch } from "react-icons/ci";
 import { FaAnglesLeft, FaChevronLeft } from "react-icons/fa6";
+import { Input } from "@/components/ui/input";
+
 type TaskTableRow = Pick<
   Task,
   "name" | "assignee" | "priority" | "processDefinitionId" | "created"
 >;
+
 const columnHelper = createColumnHelper<TaskTableRow>();
 
 const columns = [
@@ -26,44 +29,32 @@ const columns = [
     enableSorting: false,
     cell: (info) => info.getValue(),
     header: () => (
-      <span className=" flex items-center text-custom-neutral01">
-        عنوان وظیفه
-      </span>
+      <span className="text-custom-primary font-bold">عنوان وظیفه</span>
     ),
   }),
   columnHelper.accessor("assignee", {
     enableSorting: false,
     cell: (info) => info.getValue(),
-    header: () => (
-      <span className=" flex items-center text-custom-neutral01"> مسئول</span>
-    ),
+    header: () => <span className="text-custom-primary font-bold">مسئول</span>,
   }),
   columnHelper.accessor("priority", {
     enableSorting: true,
     cell: (info) => info.getValue(),
-    header: () => (
-      <span className=" flex items-center text-custom-neutral01"> اولویت</span>
-    ),
+    header: () => <span className="text-custom-primary font-bold">اولویت</span>,
   }),
   columnHelper.accessor("processDefinitionId", {
     enableSorting: false,
     cell: (info) => info.getValue(),
     header: () => (
-      <span className=" flex items-center text-custom-neutral01">
-        {" "}
-        شناسه فرایند
-      </span>
+      <span className="text-custom-primary font-bold">شناسه فرایند</span>
     ),
   }),
   columnHelper.accessor("created", {
     enableSorting: true,
     cell: (info) => convertToJalaliDateString(info.getValue()),
     header: () => (
-      <span className=" flex items-center text-custom-neutral01">
-        تاریخ ایجاد{" "}
-      </span>
+      <span className="text-custom-primary font-bold">تاریخ ایجاد</span>
     ),
-    // this function sorting with date ⚠️
     sortingFn: (rowA, rowB, columnId) => {
       const a = new Date(rowA.getValue(columnId)).getTime();
       const b = new Date(rowB.getValue(columnId)).getTime();
@@ -74,65 +65,72 @@ const columns = [
 
 export default function TaskDetails() {
   const { userName } = useAuthStore();
-  const { data: tasks, isLoading } = useGetUserTasks(userName || "");
-  console.log("display tasks", tasks);
+  const { data: tasks = [], isLoading } = useGetUserTasks(userName || "");
+  console.log(tasks);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState<string>("");
+
   const table = useReactTable({
-    data: tasks ?? [],
+    data: tasks,
     columns,
     state: { sorting, globalFilter },
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onSortingChange: setSorting,
+    onGlobalFilterChange: setGlobalFilter,
     initialState: {
       pagination: {
         pageSize: 5,
       },
     },
-    getCoreRowModel: getCoreRowModel(),
-
-    onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
-
-    onGlobalFilterChange: setGlobalFilter,
-    getFilteredRowModel: getFilteredRowModel(),
   });
+
   if (isLoading) return <p>در حال بارگذاری...</p>;
+
   return (
-    <div className=" flex flex-col mx-auto min-h-screen max-w-4xl px-6 py-12">
-      <div className="mb-4 relative">
-        <input
-          value={globalFilter ?? ""}
+    <div className="flex flex-col mx-auto min-h-screen w-full  py-12">
+      {/* فیلتر کلی */}
+      <div className="mb-4 relative w-full px-3 md:px-0 md:pr-3">
+        <Input
+          dir="rtl"
+          className="w-full md:max-w-lg pr-10 pt-4 py-2 h-12 text-right placeholder:text-right text-custom-neutral02"
+          value={globalFilter}
           onChange={(e) => setGlobalFilter(e.target.value)}
-          placeholder="Search..."
-          className="w-full pl-10 pt-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-black placeholder:text-black"
+          placeholder="جستجو..."
         />
         <CiSearch
-          className=" absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-          size={20}
+          className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400"
+          size={25}
         />
       </div>
-      <div className=" rounded-lg shadow-2xl overflow-x-auto">
+
+      {/* جدول */}
+      <div className=" overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="bg-custom-neutral05">
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr className="" key={headerGroup.id}>
+              <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
                     className="px-6 py-3 text-right text-xs font-medium text-gray-500 tracking-wide"
                   >
                     <div
-                      {...{
-                        className: header.column.getCanSort()
-                          ? "cursor-pointer select-none flex gap-2 item-center"
-                          : "",
-                        onClick: header.column.getToggleSortingHandler(),
-                      }}
+                      className={
+                        header.column.getCanSort()
+                          ? "cursor-pointer select-none flex items-center gap-1"
+                          : "flex items-center"
+                      }
+                      onClick={header.column.getToggleSortingHandler()}
                     >
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                      <LuArrowUpDown className="ml-2" size={14} />
+                      {header.column.getCanSort() && (
+                        <LuArrowUpDown size={14} />
+                      )}
                     </div>
                   </th>
                 ))}
@@ -140,7 +138,7 @@ export default function TaskDetails() {
             ))}
           </thead>
 
-          <tbody className="bg-gray-50 divide-y divide-gray-200">
+          <tbody className="bg-transparent divide-y divide-gray-200">
             {table.getRowModel().rows.map((row) => (
               <tr key={row.id} className="hover:bg-gray-50">
                 {row.getVisibleCells().map((cell) => (
@@ -156,14 +154,14 @@ export default function TaskDetails() {
           </tbody>
         </table>
       </div>
+
+      {/* صفحه‌بندی */}
       <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-700">
         <div className="flex items-center mb-4 sm:mb-0">
-          <span className="mr-2">Items per page</span>
+          <span className="mr-2">تعداد در صفحه</span>
           <select
             value={table.getState().pagination.pageSize}
-            onChange={(e) => {
-              table.setPageSize(Number(e.target.value));
-            }}
+            onChange={(e) => table.setPageSize(Number(e.target.value))}
             className="border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
           >
             {[5, 10, 20, 30].map((pageSize) => (
@@ -173,6 +171,7 @@ export default function TaskDetails() {
             ))}
           </select>
         </div>
+
         <div className="flex items-center space-x-2">
           <button
             onClick={() => table.setPageIndex(0)}
@@ -189,7 +188,7 @@ export default function TaskDetails() {
             <FaChevronLeft size={20} />
           </button>
 
-          <span className="flex items-center">
+          <span className="flex items-center gap-1">
             <input
               type="number"
               min={1}
@@ -201,7 +200,7 @@ export default function TaskDetails() {
               }}
               className="w-16 p-2 rounded-md border border-gray-300 text-center"
             />
-            <span className="ml-1">of {table.getPageCount()}</span>
+            <span>از {table.getPageCount()}</span>
           </span>
         </div>
       </div>
