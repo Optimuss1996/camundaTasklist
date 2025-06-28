@@ -25,7 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import type { EnrichedTask } from "@/types/types";
 import { IoEyeOutline } from "react-icons/io5";
-import MobileTaskCards from "./MobileTaskCards";
+import MobileTaskCards from "@/components/taskboard/tasklist/MobileTaskCards";
 
 const columnHelper = createColumnHelper<EnrichedTask>();
 

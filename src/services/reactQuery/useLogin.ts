@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { login } from "@/api/AuthApi";
+import { camundaService } from "@/services/camundaService";
 
 export const useLogin = () => {
   return useMutation({
@@ -9,6 +9,6 @@ export const useLogin = () => {
     }: {
       username: string;
       password: string;
-    }) => login(username, password),
+    }) => camundaService.login(username, password),
   });
 };

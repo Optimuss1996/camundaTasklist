@@ -6,6 +6,16 @@ import type {
 import axiosInstance from "@/api/axiosInstance";
 
 export const camundaService = {
+  login: async (username: string, password: string) => {
+    const response = await axiosInstance.post("/identity/verify", {
+      username,
+      password,
+    });
+    console.log("response", response.data);
+
+    return response.data;
+  },
+
   checkSession: async (): Promise<{
     authenticated: boolean;
     authenticatedUser?: string;

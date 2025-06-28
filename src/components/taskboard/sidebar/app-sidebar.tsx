@@ -24,46 +24,6 @@ import { cn } from "@/lib/utils";
 import { useModalStore } from "@/store/useModalStore";
 import ProcessDefinitionModal from "./ProcessDefinitionModal";
 
-// Menu items.
-// const items = [
-//   {
-//     title: "وظیفه های من",
-//     url: "#",
-//     icon: BiTask,
-//   },
-//   {
-//     title: "وظیفه های گروه",
-//     url: "#",
-//     icon: HiOutlineUserGroup,
-//   },
-//   {
-//     title: " شروع فرایند ",
-//     url: "#",
-//     icon: FaArrowRotateLeft,
-//     action: () => useModalStore.getState().openModal(), // open modal
-//   },
-//   {
-//     title: "پیام های من",
-//     url: "#",
-//     icon: GoInbox,
-//   },
-//   {
-//     title: "کلید های میانبر",
-//     url: "#",
-//     icon: CgShortcut,
-//   },
-//   {
-//     title: "تنظیمات",
-//     url: "#",
-//     icon: IoSettingsOutline,
-//   },
-//   {
-//     title: "خروج از حساب کاربری",
-//     url: "/login",
-//     icon: IoLogOutOutline,
-//   },
-// ];
-
 export function AppSidebar() {
   const { logout } = useAuthStore();
   const navigate = useNavigate();
@@ -167,8 +127,8 @@ export function AppSidebar() {
       <SidebarFooter>
         <NavUser
           user={{
-            name: "علی حسینی",
-            email: "alihsini@gmail.com",
+            name: " محمد رضا داوودی",
+            email: "mohammadRezaDavoodi@gmail.com",
           }}
         />
       </SidebarFooter>
