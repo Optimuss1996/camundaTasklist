@@ -23,12 +23,36 @@ export interface Task {
   camundaFormRef: string | null;
   tenantId: string | null;
 }
-export interface ProcessDefinition {
+
+// --- Process Definition from /process-definition/:id API ---
+export type ProcessDefinition = {
   id: string;
   key: string;
   name: string;
-  description?: string;
-  version: string;
+  version: number;
   resource: string;
-  deploymentId: string;
-}
+};
+// --- Process Instance History from /history/process-instance/:id API ---
+export type ProcessInstanceHistory = {
+  id: string;
+  startUserId: string;
+  startTime: string;
+  processDefinitionId: string;
+  processDefinitionName: string;
+};
+// --- Final Combined Model for Display in UI ---
+export type EnrichedTask = {
+  id: string;
+  name: string;
+  assignee: string;
+  created: string;
+  priority: number;
+
+  processDefinitionId: string;
+  processDefinitionName: string;
+  processDefinitionKey: string;
+
+  processInstanceId: string;
+  processStarter: string;
+  processStartTime: string;
+};

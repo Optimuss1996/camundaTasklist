@@ -1,169 +1,142 @@
 {
-	"info": {
-		"_postman_id": "efacb589-72ff-49a0-b839-3660df5218ea",
-		"name": "camunda7-project",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "7171064"
-	},
-	"item": [
-		{
-			"name": "http://localhost:8081/engine-rest/identity/verify",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"demo\",\r\n  \"password\": \"demo\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/engine-rest/identity/verify",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"engine-rest",
-						"identity",
-						"verify"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/engine-rest/task?assignee=demo",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/engine-rest/task?assignee=demo&includeProcessVariables=true",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"engine-rest",
-						"task"
-					],
-					"query": [
-						{
-							"key": "assignee",
-							"value": "demo"
-						},
-						{
-							"key": "includeProcessVariables",
-							"value": "true"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/engine-rest/process-definition?startableInTasklist=true&startableByUser=demo&latestVersion=true",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/engine-rest/process-definition?startableInTasklist=true&startableByUser=demo&latestVersion=true",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"engine-rest",
-						"process-definition"
-					],
-					"query": [
-						{
-							"key": "startableInTasklist",
-							"value": "true"
-						},
-						{
-							"key": "startableByUser",
-							"value": "demo"
-						},
-						{
-							"key": "latestVersion",
-							"value": "true"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/engine-rest/process-definition/docsApprovalProcess:28:89d25764-42e6-11f0-9216-e0c264de6d8c",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/engine-rest/process-definition/docsApprovalProcess:28:89d25764-42e6-11f0-9216-e0c264de6d8c",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"engine-rest",
-						"process-definition",
-						"docsApprovalProcess:28:89d25764-42e6-11f0-9216-e0c264de6d8c"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/engine-rest/history/process-instance/ca582178-42e6-11f0-9216-e0c264de6d8c",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/engine-rest/history/process-instance/ca582178-42e6-11f0-9216-e0c264de6d8c",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"engine-rest",
-						"history",
-						"process-instance",
-						"ca582178-42e6-11f0-9216-e0c264de6d8c"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/engine-rest/user/demo/profile",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/engine-rest/user/demo/profile",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"engine-rest",
-						"user",
-						"demo",
-						"profile"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "efacb589-72ff-49a0-b839-3660df5218ea",
+    "name": "camunda7-project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "7171064"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8081/engine-rest/identity/verify",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"demo\",\r\n  \"password\": \"demo\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/engine-rest/identity/verify",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["engine-rest", "identity", "verify"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/engine-rest/task?assignee=demo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/engine-rest/task?assignee=demo&includeProcessVariables=true",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["engine-rest", "task"],
+          "query": [
+            {
+              "key": "assignee",
+              "value": "demo"
+            },
+            {
+              "key": "includeProcessVariables",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/engine-rest/process-definition?startableInTasklist=true&startableByUser=demo&latestVersion=true",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/engine-rest/process-definition?startableInTasklist=true&startableByUser=demo&latestVersion=true",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["engine-rest", "process-definition"],
+          "query": [
+            {
+              "key": "startableInTasklist",
+              "value": "true"
+            },
+            {
+              "key": "startableByUser",
+              "value": "demo"
+            },
+            {
+              "key": "latestVersion",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/engine-rest/process-definition/docsApprovalProcess:28:89d25764-42e6-11f0-9216-e0c264de6d8c",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/engine-rest/process-definition/ReviewInvoice:1:20f5a4fc-420e-11f0-82e6-ee5ef87f117f",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": [
+            "engine-rest",
+            "process-definition",
+            "docsApprovalProcess:28:89d25764-42e6-11f0-9216-e0c264de6d8c"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/engine-rest/history/process-instance/ca582178-42e6-11f0-9216-e0c264de6d8c",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/engine-rest/history/process-instance/ca582178-42e6-11f0-9216-e0c264de6d8c",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": [
+            "engine-rest",
+            "history",
+            "process-instance",
+            "ca582178-42e6-11f0-9216-e0c264de6d8c"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/engine-rest/user/demo/profile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/engine-rest/user/demo/profile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["engine-rest", "user", "demo", "profile"]
+        }
+      },
+      "response": []
+    }
+  ]
 }
