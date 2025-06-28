@@ -1,11 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { camundaService } from "@/services/camundaService";
-import type {
-  Task,
-  EnrichedTask,
-  ProcessDefinition,
-  ProcessInstanceHistory,
-} from "@/types/types";
+import type { Task, EnrichedTask } from "@/types/types";
 
 export const useEnrichedTasks = (assignee: string) => {
   return useQuery<EnrichedTask[], Error>({

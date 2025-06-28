@@ -17,7 +17,7 @@ import { CustomTriggerDeskTopSidebar } from "@/components/ui/customeTriggerSideb
 import { GoInbox } from "react-icons/go";
 import { CgShortcut } from "react-icons/cg";
 import { IoLogOutOutline, IoSettingsOutline } from "react-icons/io5";
-import { NavUser } from "@/components/nav-user";
+import { NavUser } from "@/components/taskboard/sidebar/nav-user";
 import { useAuthStore } from "@/store/useAuthStore";
 
 import { cn } from "@/lib/utils";

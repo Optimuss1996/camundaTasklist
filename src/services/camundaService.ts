@@ -20,7 +20,7 @@ export const camundaService = {
     authenticated: boolean;
     authenticatedUser?: string;
   }> => {
-    const response = await axiosInstance.get("/api/identity/verify");
+    const response = await axiosInstance.get("/identity/verify");
     return response.data;
   },
   getUserTasks: async (assignee: string): Promise<Task[]> => {
@@ -33,13 +33,11 @@ export const camundaService = {
     return response.data;
   },
 
-  // گرفتن اطلاعات Process Definition (نام فرآیند و ...)
   getProcessDefinitionById: async (id: string): Promise<ProcessDefinition> => {
     const response = await axiosInstance.get(`/process-definition/${id}`);
     return response.data;
   },
 
-  // گرفتن اطلاعات آغازکننده فرآیند
   getProcessInstanceById: async (
     id: string
   ): Promise<ProcessInstanceHistory> => {
