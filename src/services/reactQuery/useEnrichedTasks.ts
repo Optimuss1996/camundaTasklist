@@ -7,36 +7,44 @@ export const useEnrichedTasks = (assignee: string) => {
     queryKey: ["enrichedTasks", assignee],
     enabled: !!assignee,
     queryFn: async () => {
-      const tasks: Task[] = await camundaService.getUserTasks(assignee);
+      try {
+        const tasks: Task[] = await camundaService.getUserTasks(assignee);
 
-      const enrichedTasks = await Promise.all(
-        tasks.map(async (task) => {
-          const [processDef, processInstance] = await Promise.all([
-            camundaService.getProcessDefinitionById(task.processDefinitionId),
-            camundaService.getProcessInstanceById(task.processInstanceId),
-          ]);
+        const enrichedTasks: EnrichedTask[] = [];
 
-          const enriched: EnrichedTask = {
-            id: task.id,
-            name: task.name,
-            assignee: task.assignee || "",
-            created: task.created,
-            priority: task.priority,
+        for (const task of tasks) {
+          try {
+            const [processDef, processInstance] = await Promise.all([
+              camundaService.getProcessDefinitionById(task.processDefinitionId),
+              camundaService.getProcessInstanceById(task.processInstanceId),
+            ]);
 
-            processDefinitionId: task.processDefinitionId,
-            processDefinitionName: processDef?.name || "",
-            processDefinitionKey: processDef?.key || "",
+            enrichedTasks.push({
+              id: task.id,
+              name: task.name,
+              assignee: task.assignee || "",
+              created: task.created,
+              priority: task.priority,
 
-            processInstanceId: task.processInstanceId,
-            processStarter: processInstance?.startUserId || "",
-            processStartTime: processInstance?.startTime || "",
-          };
+              processDefinitionId: task.processDefinitionId,
+              processDefinitionName: processDef?.name || "نامشخص",
+              processDefinitionKey: processDef?.key || "",
 
-          return enriched;
-        })
-      );
+              processInstanceId: task.processInstanceId,
+              processStarter: processInstance?.startUserId || "نامشخص",
+              processStartTime: processInstance?.startTime || "",
+            });
+          } catch (err) {
+            console.error("❌ خطا در enrich کردن task:", task.id, err);
+          }
+        }
 
-      return enrichedTasks;
+        return enrichedTasks;
+      } catch (err) {
+        console.error("❌ خطا در گرفتن لیست task ها:", err);
+
+        throw new Error("خطا در دریافت لیست وظایف کاربر.");
+      }
     },
   });
 };
