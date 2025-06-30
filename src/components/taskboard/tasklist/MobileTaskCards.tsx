@@ -71,7 +71,7 @@ export default function MobileTaskCards({
         return (
           <div
             key={task.id}
-            className="rounded-xl shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] p-4 bg-custom-neutral05 shadow-2xl  transition cursor-pointer"
+            className="rounded-xl shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] p-4 bg-custom-neutral05   transition cursor-pointer"
             onClick={() => console.log("کلیک روی", task.id)} // یا برو به صفحه جزئیات
           >
             <div className="flex justify-between items-center mb-2">
